@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ news.title }} | Notícias HJE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/HJE2.ico' %}">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&
+    family=Exo+2:wght@400;500;600;700&
+    family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="news-detail-page">
+
+    <!-- NAVBAR (mesmo da home) -->
+    <div id="mobile-header-overlay">
+        <div class="mob-top">
+            <a href="/" class="mob-logo">
+                <img src="{% static 'imgs/HJE.png' %}" alt="Logo">
+            </a>
+            <button class="mob-btn" onclick="this.classList.toggle('active'); document.getElementById('mobMenuOverlay').classList.toggle('open');">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <nav class="mob-links" id="mobMenuOverlay">
+            <a href="/">Início</a>
+            <a href="/sobre-nos/">Sobre nós</a>
+            <a href="/projetos/">Nossos Projetos</a>
+            <a href="/servicos/">Nossos Serviços</a>
+            <a href="/codigo-social/">Código Social</a>
+            <a href="/noticias/">Notícias</a>
+            <a href="/loja/">Loja</a>
+            <a href="/gestao/">Gestão</a>
+        </nav>
+    </div>
+    <div id="mobile-spacer"></div>
+
+    <header id="desktop-original-header" class="navbar">
+        <nav class="navbar-links left">
+            <a href="/sobre-nos/">Sobre nós</a>
+            <a href="/projetos/">Nossos Projetos</a>
+            <a href="/servicos/">Nossos Serviços</a>
+        </nav>
+        <div class="navbar-center">
+            <a href="/" class="brand">HEALTHTECH JÚNIOR<br>EINSTEIN</a>
+        </div>
+        <nav class="navbar-links right">
+            <a href="/codigo-social/">Código Social</a>
+            <a href="/noticias/">Notícias</a>
+            <a href="/loja/">Loja</a>
+            <a href="/gestao/">Gestão</a>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <div class="news-detail-wrapper">
+        <h1 class="news-detail-title">{{ news.title }}</h1>
+
+        {% if news.created_at %}
+            <p class="news-detail-date">Publicado em {{ news.created_at|date:"d/m/Y" }}</p>
+        {% endif %}
+
+        {% if news.image %}
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-detail-image">
+        {% endif %}
+
+        <div class="news-detail-content">
+            {{ news.content|linebreaks }}
+        </div>
+
+        <div class="news-detail-actions">
+            <a href="/noticias/" class="news-detail-back">← Voltar para Notícias</a>
+            <a href="/" class="news-detail-back">⌂ Voltar para Home</a>
+        </div>
+
+        {% if news.external_link %}
+            <div class="news-detail-actions">
+                <a href="{{ news.external_link }}" target="_blank" class="news-external-link">🔗 Acessar link relacionado</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="background: #0d1117; border-top: 1px solid rgba(255,255,255,0.06);">
+        <p>© 2026 Healthtech Júnior Einstein | Todos direitos reservados</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/healthtechjr.einstein/" target="_blank"><img src="{% static 'imgs/instagram.svg' %}" alt="Instagram"></a>
+            <a href="https://www.linkedin.com/company/einsteincoding/posts/?feedView=all" target="_blank"><img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn"></a>
+            <a href="https://github.com/Einstein-Coding-Projetos" target="_blank"><img src="{% static 'imgs/github.svg' %}" alt="GitHub" style="filter: brightness(0) invert(1);"></a>
+        </div>
+        <p>Av. Prof. Francisco Morato, 4293 - Butantã, São Paulo - SP</p>
+        <p>Email: einstein.coding@outlook.com</p>
+    </footer>
+
+</body>
+</html>

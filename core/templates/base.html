@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Healthtech Júnior Einstein{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<!-- MOBILE HEADER -->
+<div id="mobile-header-overlay">
+    <div class="mob-top">
+        <a href="/" class="mob-logo">
+            <img src="{% static 'imgs/logoHJEclaro.png' %}" alt="Logo HJE">
+            <span>HJE</span>
+        </a>
+        <button class="mob-btn" onclick="this.classList.toggle('active'); document.getElementById('mobMenuOverlay').classList.toggle('open');">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <nav class="mob-links" id="mobMenuOverlay">
+        <a href="/">Início</a>
+        <a href="/sobre-nos/">Sobre nós</a>
+        <a href="/projetos/">Projetos</a>
+        <a href="/servicos/">Serviços</a>
+        <a href="/codigo-social/">Código Social</a>
+        <a href="/noticias/">Notícias</a>
+        <a href="/loja/">Loja</a>
+        <a href="/gestao/">Gestão</a>
+    </nav>
+</div>
+
+<div id="mobile-spacer"></div>
+
+<!-- NAVBAR DESKTOP -->
+<header id="desktop-original-header" class="navbar">
+    <nav class="navbar-links left">
+        <a href="/sobre-nos/">Quem somos</a>
+        <a href="/projetos/">Projetos</a>
+        <a href="/servicos/">Serviços</a>
+    </nav>
+
+    <div class="navbar-center">
+        <a href="/" class="brand">HEALTHTECH JÚNIOR<br>EINSTEIN</a>
+    </div>
+
+    <nav class="navbar-links right">
+        <a href="/codigo-social/">Código Social</a>
+        <a href="/noticias/">Notícias</a>
+        <a href="/gestao/">Gestão</a>
+        <a href="/loja/">Loja</a>
+    </nav>
+</header>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

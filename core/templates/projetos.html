@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos | Healthtech Júnior Einstein</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/HJE2.ico' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="page-blue">
+
+<style>
+    /* ══════════════════════════════════════════
+       ESTILOS DA PÁGINA — PROJETOS
+    ══════════════════════════════════════════ */
+    .hero-projetos {
+        height: 52vh; min-height: 320px;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center; text-align: center;
+        position: relative; overflow: hidden;
+    }
+    .hero-projetos::before {
+        content: ''; position: absolute;
+        width: 600px; height: 600px;
+        background: radial-gradient(circle, rgba(65,105,225,0.2) 0%, transparent 70%);
+        top: -100px; right: -100px; pointer-events: none;
+    }
+    .hero-projetos h1 { font-family: 'Teko', sans-serif; font-size: 88px; font-weight: 600; line-height: 0.9; text-transform: uppercase; letter-spacing: 3px; position: relative; z-index: 1; }
+    .hero-projetos p { font-size: 18px; margin-top: 14px; opacity: 0.7; letter-spacing: 5px; text-transform: uppercase; position: relative; z-index: 1; }
+    .hero-divider { width: 80px; height: 3px; background-color: #636ce6; border-radius: 2px; margin: 16px auto 0; position: relative; z-index: 1; }
+    .proj-wrapper { max-width: 1180px; margin: 0 auto; padding: 60px 40px; }
+    .section-eyebrow { font-family: 'Teko', sans-serif; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #7ba7ff; display: block; margin-bottom: 8px; }
+    .section-heading { font-family: 'Teko', sans-serif; font-size: 48px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 36px; }
+    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 60px; }
+    .bento-card.destaque { grid-column: span 2; min-height: 380px; }
+    .bento-card {
+        position: relative; border-radius: 20px; overflow: hidden; min-height: 240px;
+        background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .bento-card:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(65,105,225,0.25); border-color: rgba(65,105,225,0.4); }
+    .bento-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .bento-card:hover .bento-bg { transform: scale(1.06); }
+    .bento-bg::after { content: ''; position: absolute; inset: 0; background-color: linear-gradient(to top, rgba(10,15,40,0.92) 0%, rgba(10,15,40,0.35) 60%, transparent 100%); }
+    .bento-content { position: relative; z-index: 2; padding: 28px; }
+    .bento-card.destaque .bento-content::before { content: 'DESTAQUE'; display: inline-block; background: #636ce6; padding: 3px 12px; border-radius: 20px; font-family: 'Teko', sans-serif; font-size: 11px; letter-spacing: 2.5px; color: #fff; margin-bottom: 10px; }
+    .bento-content h3 { font-family: 'Teko', sans-serif; font-size: 30px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 8px; line-height: 1.1; color: #fff; }
+    .bento-card.destaque .bento-content h3 { font-size: 38px; }
+    .bento-content p { font-size: 15px; line-height: 1.6; opacity: 0.85; color: rgba(255,255,255,0.85); margin-bottom: 16px; }
+    .btn-ler-mais { background: none; border: none; cursor: pointer; font-family: 'Teko', sans-serif; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: #8ab4ff; padding: 0; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-ler-mais:hover { color: #fff; gap: 10px; }
+    .btn-ext-link { color: rgba(255,255,255,0.5); font-size: 1.1rem; text-decoration: none; transition: color 0.2s; }
+    .btn-ext-link:hover { color: #fff; }
+    .proj-todos-title { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; }
+    .proj-todos-title h2 { font-family: 'Teko', sans-serif; font-size: 40px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; }
+    .proj-todos-title .line { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+    .proj-grid-uniforme { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+    .proj-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    .proj-card:hover { transform: translateY(-7px); box-shadow: 0 18px 40px rgba(65,105,225,0.2); border-color: rgba(65,105,225,0.35); }
+    .proj-card-img { height: 175px; background-size: cover; background-position: center; background-color: rgba(65,105,225,0.15); position: relative; }
+    .proj-card-img::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(15,20,50,0.7), transparent); }
+    .proj-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .proj-card-body h3 { font-family: 'Teko', sans-serif; font-size: 24px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 8px; color: #fff; line-height: 1.15; }
+    .proj-card-body p { font-size: 15px; line-height: 1.6; opacity: 0.82; flex: 1; margin-bottom: 18px; }
+    .proj-card-footer { display: flex; justify-content: space-between; align-items: center; }
+    .btn-outline-proj { background: transparent; border: 1px solid rgba(65,105,225,0.5); color: #8ab4ff; padding: 7px 16px; border-radius: 8px; cursor: pointer; font-family: 'Teko', sans-serif; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
+    .btn-outline-proj:hover { background: rgba(65,105,225,0.2); color: #fff; }
+    .empty-state { text-align: center; padding: 80px 20px; opacity: 0.6; font-size: 18px; }
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 99999; background: rgba(5,10,30,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+    .modal-overlay.active { display: flex; }
+    .modal-glass { background: rgba(20,30,70,0.95); border: 1px solid rgba(65,105,225,0.3); border-radius: 24px; width: 90%; max-width: 640px; max-height: 90vh; overflow-y: auto; position: relative; }
+    .modal-header { width: 100%; height: 240px; background-size: cover; background-position: center; border-radius: 24px 24px 0 0; }
+    .modal-body { padding: 32px 36px 36px; }
+    .modal-body h2 { font-family: 'Teko', sans-serif; font-size: 38px; font-weight: 500; letter-spacing: 1px; margin-bottom: 14px; color: #fff; }
+    .modal-body p { font-size: 17px; line-height: 1.7; opacity: 0.88; margin-bottom: 24px; }
+    .modal-cta { display: inline-block; background: linear-gradient(135deg, #4169e1, #7b68ee); color: #fff; padding: 11px 28px; border-radius: 10px; text-decoration: none; font-family: 'Teko', sans-serif; font-size: 18px; letter-spacing: 1.5px; text-transform: uppercase; transition: opacity 0.2s, transform 0.2s; }
+    .modal-cta:hover { opacity: 0.85; transform: translateY(-2px); }
+    .close-btn { position: absolute; top: 16px; right: 20px; font-size: 28px; color: rgba(255,255,255,0.7); cursor: pointer; z-index: 10; transition: color 0.2s; background: rgba(0,0,0,0.4); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
+    .close-btn:hover { color: #fff; }
+
+    @media (max-width: 900px) {
+        .bento-grid { grid-template-columns: 1fr; }
+        .bento-card.destaque { grid-column: span 1; min-height: 280px; }
+        .proj-wrapper { padding: 40px 20px; }
+        .hero-projetos h1 { font-size: 56px; }
+    }
+</style>
+
+    <!-- MOBILE HEADER -->
+    <div id="mobile-header-overlay">
+        <div class="mob-top">
+            <a href="/" class="mob-logo">
+                <img src="{% static 'imgs/logoHJEclaro.png' %}" alt="Logo HJE">
+                <span>HJE</span>
+            </a>
+
+            <button class="mob-btn"
+            onclick="this.classList.toggle('active'); document.getElementById('mobMenuOverlay').classList.toggle('open');">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <nav class="mob-links" id="mobMenuOverlay">
+            <a href="/">Início</a>
+            <a href="/sobre-nos/">Sobre nós</a>
+            <a href="/projetos/">Nossos Projetos</a>
+            <a href="/servicos/">Nossos Serviços</a>
+            <a href="/codigo-social/">Código Social</a>
+            <a href="/noticias/">Notícias</a>
+            <a href="/loja/">Loja</a>
+            <a href="/gestao/">Gestão</a>
+        </nav>
+    </div>
+
+    <div id="mobile-spacer"></div>
+
+    <header id="desktop-original-header" class="navbar">
+
+        <nav class="navbar-links left">
+            <a href="/sobre-nos/">Quem somos</a>
+            <a href="/projetos/">Projetos</a>
+            <a href="/servicos/">Serviços</a>
+        </nav>
+
+        <div class="navbar-center">
+            <a href="/" class="brand">
+                HEALTHTECH JÚNIOR<br>EINSTEIN
+            </a>
+        </div>
+
+        <nav class="navbar-links right">
+            <a href="/codigo-social/">Código Social</a>
+            <a href="/noticias/">Notícias</a>
+            <a href="/gestao/">Gestão</a>
+            <a href="/loja/">Loja</a>
+        </nav>
+
+    </header>
+<div class="navbar-spacer"></div>
+
+<!-- Hero -->
+<section class="hero-projetos">
+    <h1 data-aos="fade-up">Nossos Projetos</h1>
+    <div class="hero-divider" data-aos="fade-up" data-aos-delay="100"></div>
+    <p data-aos="fade-up" data-aos-delay="200">Tecnologia aplicada à saúde</p>
+</section>
+
+<!-- Conteúdo -->
+<div class="proj-wrapper">
+
+    <span class="section-eyebrow" data-aos="fade-up">Projetos em destaque</span>
+    <h2 class="section-heading" data-aos="fade-up">O que estamos construindo</h2>
+
+    <div class="bento-grid">
+        {% for project in projects|slice:":3" %}
+        <div class="bento-card {% if forloop.first %}destaque{% endif %}" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+            {% if project.image %}<div class="bento-bg" style="background-image: url('{{ project.image.url }}');"></div>{% endif %}
+            <div class="bento-content">
+                <h3>{{ project.title }}</h3>
+                <p>{% if forloop.first %}{{ project.summary|truncatechars:200 }}{% else %}{{ project.summary|truncatechars:80 }}{% endif %}</p>
+                <div style="display:flex;gap:14px;align-items:center;">
+                    <button class="btn-ler-mais" onclick="openModal('{{ project.title|escapejs }}', '{{ project.summary|escapejs }}', '{% if project.image %}{{ project.image.url }}{% endif %}', '{{ project.link|default:'' }}')">Ver projeto →</button>
+                    {% if project.link %}<a href="{{ project.link }}" target="_blank" class="btn-ext-link" title="Visitar site">↗</a>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="empty-state">Em breve, novos projetos serão anunciados aqui.</p>
+        {% endfor %}
+    </div>
+
+    {% if projects|length > 3 %}
+    <div class="proj-todos-title" data-aos="fade-up">
+        <h2>Todos os Projetos</h2>
+        <div class="line"></div>
+    </div>
+    <div class="proj-grid-uniforme">
+        {% for project in projects|slice:"3:" %}
+        <div class="proj-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+            {% if project.image %}<div class="proj-card-img" style="background-image: url('{{ project.image.url }}');"></div>{% else %}<div class="proj-card-img"></div>{% endif %}
+            <div class="proj-card-body">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.summary|truncatechars:110 }}</p>
+                <div class="proj-card-footer">
+                    <button class="btn-outline-proj" onclick="openModal('{{ project.title|escapejs }}', '{{ project.summary|escapejs }}', '{% if project.image %}{{ project.image.url }}{% endif %}', '{{ project.link|default:'' }}')">Saiba mais</button>
+                    {% if project.link %}<a href="{{ project.link }}" target="_blank" class="btn-ext-link" title="Visitar site">↗</a>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+
+<footer class="footer">
+    <p>© 2026 Healthtech Júnior Einstein | Todos direitos reservados</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/healthtechjr.einstein/" target="_blank"><img src="{% static 'imgs/instagram.svg' %}" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/company/einsteincoding/posts/?feedView=all" target="_blank"><img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn"></a>
+        <a href="https://github.com/Einstein-Coding-Projetos" target="_blank" aria-label="GitHub"><img src="{% static 'imgs/github.svg' %}" alt="GitHub" style="filter:brightness(0) invert(1);"></a>
+    </div>
+    <p>Endereço: Av. Prof. Francisco Morato, 4293 - Butantã, São Paulo - SP</p>
+    <p>Email: einstein.coding@outlook.com</p>
+</footer>
+
+<!-- Modal -->
+<div id="projectModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-glass">
+        <span class="close-btn" onclick="closeModal(event)">&times;</span>
+        <div class="modal-header" id="modalImage"></div>
+        <div class="modal-body">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <a id="modalLink" href="#" target="_blank" class="modal-cta">Visitar Projeto ↗</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 900, once: false, mirror: true, disable: 'mobile' });</script>
+<script>
+function openModal(title, description, imageUrl, link) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDescription').innerText = description;
+    const imgContainer = document.getElementById('modalImage');
+    if (imageUrl && imageUrl !== 'None') { imgContainer.style.backgroundImage = "url('" + imageUrl + "')"; imgContainer.style.display = 'block'; }
+    else { imgContainer.style.display = 'none'; }
+    const btnLink = document.getElementById('modalLink');
+    if (link && link !== 'None' && link !== '') { btnLink.href = link; btnLink.style.display = 'inline-block'; }
+    else { btnLink.style.display = 'none'; }
+    document.getElementById('projectModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal(event) {
+    if (event.target.classList.contains('modal-overlay') || event.target.classList.contains('close-btn')) {
+        document.getElementById('projectModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+</script>
+<script>
+(function () {
+    const navbar = document.getElementById('desktop-original-header');
+    if (!navbar) return;
+    let lastScroll = 0;
+    const THRESHOLD = 80;
+    window.addEventListener('scroll', function () {
+        const current = window.scrollY;
+        if (current > 20) { navbar.classList.add('scrolled'); }
+        else { navbar.classList.remove('scrolled'); navbar.classList.remove('hide'); lastScroll = current; return; }
+        if (current > lastScroll && current > THRESHOLD) { navbar.classList.add('hide'); }
+        else if (current < lastScroll) { navbar.classList.remove('hide'); }
+        lastScroll = current;
+    }, { passive: true });
+})();
+</script>
+</body>
+</html>

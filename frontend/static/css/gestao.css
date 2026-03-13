@@ -1,0 +1,383 @@
+/* =========================
+   Página Gestão
+========================= */
+.gestao-page {
+  padding: 10px 60px 90px;
+}
+
+.gestao-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cabeçalho (título + métricas) */
+.gestao-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: start;
+  margin-top: 50px;
+}
+
+.gestao-title {
+  font-family: "Teko", sans-serif;
+  font-size: 70px;
+  line-height: 0.9;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin: 10px 0 0;
+}
+
+/* Métricas */
+.metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.metric {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  color: #4b57e6;
+}
+
+.metric .num {
+  font-family: "Teko", sans-serif;
+  font-size: 70px;
+  line-height: 1;
+  color: #4b57e6;
+}
+
+.metric .txt {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 30px;
+  color: #4b57e6;
+  opacity: 0.9;
+}
+
+/* Organograma */
+.org-chart {
+  position: relative;
+  margin: 1px auto 0;
+  width: min(1100px, 100%);
+  aspect-ratio: 1200 / 800;
+}
+
+/* Linhas no fundo */
+.org-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Pessoa/caixa */
+.person {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+
+.avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,.10);
+  margin-bottom: -24px;
+  background: #ddd;
+  position: relative;
+  z-index: 10;
+}
+
+.card {
+  width: 220px;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 12px 26px rgba(31,43,189,.25);
+  position: relative;
+  z-index: 5;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  font-family: "Teko", sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+.role {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 6px 0 2px;
+  opacity: 0.95;
+  text-transform: uppercase;
+}
+
+.phone {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* Membros dentro do card */
+.members {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 10px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+/* Defaults por pessoa (posições Desktop) */
+.p-presidente { --x: 50%; --y: 7%; }
+.p-vice { --x: 74%; --y: 18%; }
+.p-dir1 { --x: 4%;  --y: 63%; }
+.p-dir2 { --x: 27%; --y: 63%; }
+.p-dir3 { --x: 50%; --y: 63%; }
+.p-dir4 { --x: 73%; --y: 63%; }
+.p-dir5 { --x: 96%; --y: 63%; }
+
+/* =========================
+   Mobile Responsivo
+========================= */
+@media (max-width: 1100px) {
+  .gestao-page { padding: 60px 20px 80px; }
+
+  .gestao-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    margin-top: 50px;
+  }
+
+  .gestao-title { font-size: 64px; }
+
+  .metrics { align-items: center; }
+  .metric .txt { font-size: 22px; }
+
+  .org-lines { display: none; }
+
+  .org-chart {
+    height: auto;
+    aspect-ratio: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 5px;
+  }
+
+  .person {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100%;
+    max-width: 350px;
+    flex-direction: column;
+    align-items: center;
+    --x: 0; --y: 0;
+  }
+}
+
+/* =========================
+   Team Carousel
+========================= */
+.team-card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.team-card:hover { transform: translateY(-5px); }
+
+.team-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.team-name {
+  font-family: "Teko", sans-serif;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.team-role {
+  font-family: "Rajdhani", sans-serif;
+  opacity: 0.85;
+}
+
+.team-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 0px;
+}
+
+.team-social a {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: #1f2bbd;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.team-social a:hover {
+  transform: scale(1.1);
+  background: #dfe3ff;
+}
+
+/* =========================
+   Carousel Ajustes
+========================= */
+.carousel-item { text-align: center; }
+
+.carousel-item img { width: auto !important; }
+
+#teamCarousel .carousel-control-prev { left: -60px; }
+#teamCarousel .carousel-control-next { right: -60px; }
+#teamCarousel { overflow: visible; }
+
+@media (max-width: 768px) {
+  #teamCarousel .carousel-item .col-sm-6,
+  #teamCarousel .carousel-item .col-lg-3 { display: none; }
+
+  #teamCarousel .carousel-item .col-12 {
+    display: block;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
+
+.team-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centraliza verticalmente */
+  align-items: center;       /* centraliza horizontalmente */
+  text-align: center;
+  min-height: 260px;         /* mantém altura consistente */
+  padding: 20px;
+}
+
+.team-photo{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+
+  padding: 28px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+
+  border-radius: 12px;
+
+  background: rgba(59, 130, 246, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-value {
+  font-family: 'Teko', sans-serif;
+  font-size: 40px;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.stat-label {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+}
+
+.gestao-intro {
+  max-width: 720px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+}
+
+.gestao-intro h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.gestao-intro p {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+
+#teamCarousel {
+  margin-bottom: 100px;
+}

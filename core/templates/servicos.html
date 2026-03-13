@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Serviços - HJE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/HJE2.ico' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="page-black">
+
+<style>
+    /* ══════════════════════════════════════════
+       ESTILOS DA PÁGINA — SERVIÇOS
+    ══════════════════════════════════════════ */
+    .hero-servicos {
+        height: 52vh; min-height: 320px;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center; text-align: center;
+        position: relative; overflow: hidden;
+    }
+    .hero-servicos::before { content: ''; position: absolute; width: 550px; height: 550px; background: radial-gradient(circle, rgba(0,74,173,0.22) 0%, transparent 70%); bottom: -120px; left: -80px; pointer-events: none; }
+    .hero-servicos::after { content: ''; position: absolute; width: 350px; height: 350px; background: radial-gradient(circle, rgba(100,160,255,0.12) 0%, transparent 70%); top: 20px; right: 60px; pointer-events: none; }
+    .hero-servicos h1 { font-family: 'Teko', sans-serif; font-size: 88px; font-weight: 600; line-height: 0.9; text-transform: uppercase; letter-spacing: 3px; position: relative; z-index: 1; color: #fff; }
+    .hero-servicos p { font-size: 18px; margin-top: 14px; opacity: 0.7; letter-spacing: 5px; text-transform: uppercase; position: relative; z-index: 1; color: #fff; }
+    .hero-divider { width: 80px; height: 3px; background: #636ce6; border-radius: 2px; margin: 16px auto 0; position: relative; z-index: 1; }
+    .serv-wrapper { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+    .servicos-intro { text-align: center; margin-bottom: 56px; }
+    .servicos-intro .eyebrow, .como-funciona .eyebrow, .contato-cta .eyebrow { font-family: 'Teko', sans-serif; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #7ba7ff; display: block; margin-bottom: 10px; }
+    .servicos-intro h2 { font-family: 'Teko', sans-serif; font-size: 48px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+    .servicos-intro p { font-size: 18px; line-height: 1.7; opacity: 0.85; max-width: 700px; margin: 0 auto; }
+    .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 56px; }
+    .servico-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 34px 28px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
+    .servico-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #004aad, #6ab0ff); opacity: 0; transition: opacity 0.3s ease; }
+    .servico-card:hover { transform: translateY(-7px); box-shadow: 0 20px 45px rgba(0,74,173,0.22); border-color: rgba(0,74,173,0.4); }
+    .servico-card:hover::after { opacity: 1; }
+    .servico-icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+    .servico-card h3 { font-family: 'Teko', sans-serif; font-size: 26px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 10px; color: #fff; line-height: 1.1; }
+    .servico-card p { font-size: 15.5px; line-height: 1.65; opacity: 0.82; color: rgba(255,255,255,0.82); }
+    .como-funciona { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.11); border-radius: 24px; padding: 48px 52px; margin-bottom: 48px; }
+    .como-funciona h2 { font-family: 'Teko', sans-serif; font-size: 42px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 36px; }
+    .steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step { text-align: center; }
+    .step-num { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #004aad, #6ab0ff); display: flex; align-items: center; justify-content: center; font-family: 'Teko', sans-serif; font-size: 24px; font-weight: 600; color: #fff; margin: 0 auto 14px; }
+    .step h4 { font-family: 'Teko', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 7px; color: #fff; }
+    .step p { font-size: 14.5px; line-height: 1.6; opacity: 0.78; }
+    .contato-cta { text-align: center; background: linear-gradient(135deg, rgba(0,74,173,0.18), rgba(106,176,255,0.1)); border: 1px solid rgba(0,74,173,0.3); border-radius: 24px; padding: 60px 40px; position: relative; overflow: hidden; }
+    .contato-cta::before { content: '@'; position: absolute; left: 40px; top: 20px; font-family: 'Teko', sans-serif; font-size: 120px; color: rgba(255,255,255,0.03); pointer-events: none; }
+    .contato-cta h2 { font-family: 'Teko', sans-serif; font-size: 52px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .contato-cta p { font-size: 18px; line-height: 1.7; opacity: 0.85; max-width: 600px; margin: 0 auto 36px; }
+    .btn-email { display: inline-flex; align-items: center; gap: 10px; background-color: #1d27b4; color: #fff; padding: 16px 40px; border-radius: 14px; text-decoration: none; font-family: 'Teko', sans-serif; font-size: 22px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; transition: opacity 0.2s, transform 0.25s; box-shadow: 0 8px 30px rgba(0,74,173,0.4); }
+    .btn-email:hover { opacity: 0.9; transform: translateY(-3px); }
+    .contato-sub { margin-top: 20px; font-size: 15px; opacity: 0.6; letter-spacing: 0.5px; }
+    .contato-redes { display: flex; justify-content: center; gap: 32px; margin-top: 36px; }
+    .rede-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; font-family: 'Teko', sans-serif; transition: color 0.2s, transform 0.2s; }
+    .rede-item:hover { color: #fff; transform: translateY(-3px); }
+    .rede-item img { width: 28px; height: 28px; opacity: 0.7; transition: opacity 0.2s; }
+    .rede-item:hover img { opacity: 1; }
+
+    @media (max-width: 900px) {
+        .servicos-grid, .steps-row { grid-template-columns: 1fr; }
+        .serv-wrapper { padding: 40px 20px; }
+        .como-funciona { padding: 32px 24px; }
+        .hero-servicos h1 { font-size: 56px; }
+    }
+    @media (max-width: 600px) {
+        .contato-cta { padding: 40px 20px; }
+        .contato-cta h2 { font-size: 38px; }
+    }
+</style>
+
+<!-- MOBILE HEADER -->
+<div id="mobile-header-overlay">
+    <div class="mob-top">
+        <a href="/" class="mob-logo">
+            <img src="{% static 'imgs/logoHJEclaro.png' %}" alt="Logo HJE">
+            <span>HJE</span>
+        </a>
+
+        <button class="mob-btn"
+        onclick="this.classList.toggle('active'); document.getElementById('mobMenuOverlay').classList.toggle('open');">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <nav class="mob-links" id="mobMenuOverlay">
+        <a href="/">Início</a>
+        <a href="/sobre-nos/">Sobre nós</a>
+        <a href="/projetos/">Nossos Projetos</a>
+        <a href="/servicos/">Nossos Serviços</a>
+        <a href="/codigo-social/">Código Social</a>
+        <a href="/noticias/">Notícias</a>
+        <a href="/loja/">Loja</a>
+        <a href="/gestao/">Gestão</a>
+    </nav>
+</div>
+
+<div id="mobile-spacer"></div>
+
+<header id="desktop-original-header" class="navbar">
+
+    <nav class="navbar-links left">
+        <a href="/sobre-nos/">Quem somos</a>
+        <a href="/projetos/">Projetos</a>
+        <a href="/servicos/">Serviços</a>
+    </nav>
+
+    <div class="navbar-center">
+        <a href="/" class="brand">
+            HEALTHTECH JÚNIOR<br>EINSTEIN
+        </a>
+    </div>
+
+    <nav class="navbar-links right">
+        <a href="/codigo-social/">Código Social</a>
+        <a href="/noticias/">Notícias</a>
+        <a href="/gestao/">Gestão</a>
+        <a href="/loja/">Loja</a>
+    </nav>
+
+</header>
+<div class="navbar-spacer"></div>
+
+<!-- Hero -->
+<section class="hero-servicos">
+    <h1 data-aos="fade-up">Parcerias &amp; Serviços</h1>
+    <div class="hero-divider" data-aos="fade-up" data-aos-delay="100"></div>
+    <p data-aos="fade-up" data-aos-delay="200">Conecte-se com a inovação</p>
+</section>
+
+<!-- Conteúdo -->
+<div class="serv-wrapper">
+
+    <div class="servicos-intro" data-aos="fade-up">
+        <span class="eyebrow">O que oferecemos</span>
+        <h2>Soluções em Tecnologia &amp; Saúde</h2>
+        <p>Desenvolvemos produtos e serviços de tecnologia aplicados à saúde, combinando rigor técnico e preço acessível — porque somos uma empresa júnior formada por quem está na vanguarda da Engenharia Biomédica.</p>
+    </div>
+
+    <div class="servicos-grid">
+        <div class="servico-card" data-aos="fade-up" data-aos-delay="0">
+            <h3>Desenvolvimento de Software</h3>
+            <p>Sites, sistemas web e aplicações sob medida para clínicas, hospitais, startups de saúde e pesquisadores.</p>
+        </div>
+        <div class="servico-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>Análise &amp; Visualização de Dados</h3>
+            <p>Transformamos dados clínicos e biomédicos em dashboards e relatórios que facilitam a tomada de decisão.</p>
+        </div>
+        <div class="servico-card" data-aos="fade-up" data-aos-delay="0">
+            <h3>Automação de Processos</h3>
+            <p>Automatizamos tarefas repetitivas e integramos sistemas para tornar fluxos clínicos e administrativos mais eficientes.</p>
+        </div>
+        <div class="servico-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>Treinamentos &amp; Workshops</h3>
+            <p>Capacitamos equipes em programação, análise de dados e uso de ferramentas tecnológicas aplicadas à saúde.</p>
+        </div>
+    </div>
+
+    <div class="contato-cta" data-aos="fade-up">
+        <span class="eyebrow">Vamos conversar?</span>
+        <h2>Fale Conosco</h2>
+        <p>Tem interesse em fechar uma parceria, contratar um serviço ou tirar dúvidas sobre o que podemos fazer pela sua organização? Manda um e-mail para a gente.</p>
+        <a href="mailto:einstein.coding@outlook.com" class="btn-email">✉ einstein.coding@outlook.com</a>
+        <p class="contato-sub">Respondemos em até 2 dias úteis</p>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p>© 2026 Healthtech Júnior Einstein | Todos direitos reservados</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/healthtechjr.einstein/" target="_blank"><img src="{% static 'imgs/instagram.svg' %}" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/company/einsteincoding/posts/?feedView=all" target="_blank"><img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn"></a>
+        <a href="https://github.com/Einstein-Coding-Projetos" target="_blank" aria-label="GitHub"><img src="{% static 'imgs/github.svg' %}" alt="GitHub" style="filter:brightness(0) invert(1);"></a>
+    </div>
+    <p>Email: einstein.coding@outlook.com</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 900, once: false, mirror: true, disable: 'mobile' });</script>
+<script>
+(function () {
+    const navbar = document.getElementById('desktop-original-header');
+    if (!navbar) return;
+    let lastScroll = 0;
+    const THRESHOLD = 80;
+    window.addEventListener('scroll', function () {
+        const current = window.scrollY;
+        if (current > 20) { navbar.classList.add('scrolled'); }
+        else { navbar.classList.remove('scrolled'); navbar.classList.remove('hide'); lastScroll = current; return; }
+        if (current > lastScroll && current > THRESHOLD) { navbar.classList.add('hide'); }
+        else if (current < lastScroll) { navbar.classList.remove('hide'); }
+        lastScroll = current;
+    }, { passive: true });
+})();
+</script>
+</body>
+</html>
