@@ -120,21 +120,21 @@
 
     <div id="mobile-spacer"></div>
 
-    <header id="desktop-original-header" class="navbar">
+    <header id="desktop-original-header" class="navbar-projetos">
 
-        <nav class="navbar-links left">
+        <nav class="navbar-projetos-links left">
             <a href="/sobre-nos/">Quem somos</a>
             <a href="/projetos/">Projetos</a>
             <a href="/servicos/">Serviços</a>
         </nav>
 
-        <div class="navbar-center">
+        <div class="navbar-projetos-center">
             <a href="/" class="brand">
                 HEALTHTECH JÚNIOR<br>EINSTEIN
             </a>
         </div>
 
-        <nav class="navbar-links right">
+        <nav class="navbar-projetos-links right">
             <a href="/codigo-social/">Código Social</a>
             <a href="/noticias/">Notícias</a>
             <a href="/gestao/">Gestão</a>
@@ -142,7 +142,7 @@
         </nav>
 
     </header>
-<div class="navbar-spacer"></div>
+<div class="navbar-projetos-spacer"></div>
 
 <!-- Hero -->
 <section class="hero-projetos">
@@ -247,16 +247,16 @@ function closeModal(event) {
 </script>
 <script>
 (function () {
-    const navbar = document.getElementById('desktop-original-header');
-    if (!navbar) return;
+    const navbar-projetos = document.getElementById('desktop-original-header');
+    if (!navbar-projetos) return;
     let lastScroll = 0;
     const THRESHOLD = 80;
     window.addEventListener('scroll', function () {
         const current = window.scrollY;
-        if (current > 20) { navbar.classList.add('scrolled'); }
-        else { navbar.classList.remove('scrolled'); navbar.classList.remove('hide'); lastScroll = current; return; }
-        if (current > lastScroll && current > THRESHOLD) { navbar.classList.add('hide'); }
-        else if (current < lastScroll) { navbar.classList.remove('hide'); }
+        if (current > 20) { navbar-projetos.classList.add('scrolled'); }
+        else { navbar-projetos.classList.remove('scrolled'); navbar-projetos.classList.remove('hide'); lastScroll = current; return; }
+        if (current > lastScroll && current > THRESHOLD) { navbar-projetos.classList.add('hide'); }
+        else if (current < lastScroll) { navbar-projetos.classList.remove('hide'); }
         lastScroll = current;
     }, { passive: true });
 })();

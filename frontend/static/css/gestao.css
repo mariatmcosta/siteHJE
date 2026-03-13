@@ -51,7 +51,7 @@
 }
 
 .metric .txt {
-  font-family: "Rajdhani", sans-serif;
+  font-family: "Teko", sans-serif;
   font-size: 30px;
   color: #4b57e6;
   opacity: 0.9;
@@ -128,7 +128,7 @@
 }
 
 .role {
-  font-family: "Rajdhani", sans-serif;
+  font-family: "Teko", sans-serif;
   font-size: 13px;
   letter-spacing: 1px;
   margin: 6px 0 2px;
@@ -137,7 +137,7 @@
 }
 
 .phone {
-  font-family: "Rajdhani", sans-serif;
+  font-family: "Teko", sans-serif;
   font-size: 14px;
   margin: 0;
   opacity: 0.95;
@@ -239,7 +239,7 @@
 }
 
 .team-role {
-  font-family: "Rajdhani", sans-serif;
+  font-family: "Teko", sans-serif;
   opacity: 0.85;
 }
 

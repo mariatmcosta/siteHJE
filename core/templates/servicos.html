@@ -102,21 +102,21 @@
 
 <div id="mobile-spacer"></div>
 
-<header id="desktop-original-header" class="navbar">
+<header id="desktop-original-header" class="navbar-servicos">
 
-    <nav class="navbar-links left">
+    <nav class="navbar-servicos-links left">
         <a href="/sobre-nos/">Quem somos</a>
         <a href="/projetos/">Projetos</a>
         <a href="/servicos/">Serviços</a>
     </nav>
 
-    <div class="navbar-center">
+    <div class="navbar-servicos-center">
         <a href="/" class="brand">
             HEALTHTECH JÚNIOR<br>EINSTEIN
         </a>
     </div>
 
-    <nav class="navbar-links right">
+    <nav class="navbar-servicos-links right">
         <a href="/codigo-social/">Código Social</a>
         <a href="/noticias/">Notícias</a>
         <a href="/gestao/">Gestão</a>
@@ -124,7 +124,7 @@
     </nav>
 
 </header>
-<div class="navbar-spacer"></div>
+<div class="navbar-servicos-spacer"></div>
 
 <!-- Hero -->
 <section class="hero-servicos">
@@ -185,16 +185,16 @@
 <script>AOS.init({ duration: 900, once: false, mirror: true, disable: 'mobile' });</script>
 <script>
 (function () {
-    const navbar = document.getElementById('desktop-original-header');
-    if (!navbar) return;
+    const navbar-servicos = document.getElementById('desktop-original-header');
+    if (!navbar-servicos) return;
     let lastScroll = 0;
     const THRESHOLD = 80;
     window.addEventListener('scroll', function () {
         const current = window.scrollY;
-        if (current > 20) { navbar.classList.add('scrolled'); }
-        else { navbar.classList.remove('scrolled'); navbar.classList.remove('hide'); lastScroll = current; return; }
-        if (current > lastScroll && current > THRESHOLD) { navbar.classList.add('hide'); }
-        else if (current < lastScroll) { navbar.classList.remove('hide'); }
+        if (current > 20) { navbar-servicos.classList.add('scrolled'); }
+        else { navbar-servicos.classList.remove('scrolled'); navbar-servicos.classList.remove('hide'); lastScroll = current; return; }
+        if (current > lastScroll && current > THRESHOLD) { navbar-servicos.classList.add('hide'); }
+        else if (current < lastScroll) { navbar-servicos.classList.remove('hide'); }
         lastScroll = current;
     }, { passive: true });
 })();

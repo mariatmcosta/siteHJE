@@ -35,7 +35,7 @@ html, body {
 }
 
 body {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Teko', sans-serif;
     font-weight: 500;
     font-size: 18px;
     color: white;
@@ -74,87 +74,6 @@ h1, h2, h3, h4, h5, h6 {
 .section-light {
     background-color: var(--color-white);
     color: var(--color-dark);
-}
-
-/* =========================
-   NAVBAR - FIXA NO TOPO
-========================= */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: rgba(13, 17, 23, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    padding: 10px 40px;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.navbar-links {
-    display: flex;
-    gap: 40px;
-}
-
-.navbar-links.left {
-    justify-content: flex-start;
-}
-
-.navbar-links.right {
-    justify-content: flex-end;
-}
-
-.navbar-links a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    font-family: 'Teko', sans-serif !important;
-    font-size: 22px !important;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 400;
-    position: relative;
-    transition: color 0.3s ease !important;
-}
-
-.navbar-links a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 2px;
-    background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
-
-.navbar-links a:hover {
-    color: var(--color-white);
-}
-
-.navbar-links a:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.navbar-center {
-    text-align: center;
-}
-
-.navbar-center .brand {
-    color: white;
-    text-decoration: none;
-    font-family: 'Teko', sans-serif !important;
-    font-size: 28px !important;
-    line-height: 0.9;
-    letter-spacing: 3px;
-    font-weight: 600;
-    display: inline-block;
 }
 
 /* =========================
@@ -818,7 +737,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-    .navbar {
+    .navbar,
+    .navbar-cs,
+    .navbar-gestao,
+    .navbar-noticias,
+    .navbar-projetos,
+    .navbar-servicos,
+    .navbar-sobre {
         display: none;
     }
 
@@ -1000,7 +925,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Data */
 .news-detail-date {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Teko', sans-serif;
     font-size: 16px;
     color: rgba(255, 255, 255, 0.45);
     letter-spacing: 1px;
@@ -1025,7 +950,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Conteúdo do texto */
 .news-detail-content {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Teko', sans-serif;
     font-size: 20px;
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.82);
@@ -1191,7 +1116,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-slide-content p {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Teko', sans-serif;
     font-size: 16px;
     color: rgba(255,255,255,0.7);
     line-height: 1.5;
@@ -1199,7 +1124,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-slide-content a {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Teko', sans-serif;
     font-size: 14px;
     font-weight: 600;
     color: #3b6fe0;
@@ -2106,18 +2031,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #111;
 }
 
-.navbar-cs,
-.navbar-cs a,
-.navbar-cs .nav-link {
-    color: black;
-}
-
-.navbar,
-.navbar a,
-.navbar .nav-link {
-    color: white;
-}
-
 footer,
 footer p,
 footer a,
@@ -2233,4 +2146,168 @@ footer h4 {
 .cs-footer h3,
 .cs-footer h4 {
     color: white !important;
+}
+
+.navbar,
+.navbar-cs,
+.navbar-gestao,
+.navbar-noticias,
+.navbar-projetos,
+.navbar-servicos,
+.navbar-sobre {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 10px 40px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar-links,
+.navbar-cs-links,
+.navbar-gestao-links,
+.navbar-noticias-links,
+.navbar-projetos-links,
+.navbar-servicos-links,
+.navbar-sobre-links {
+    display: flex;
+    gap: 40px;
+}
+
+.navbar-links.left,
+.navbar-cs.left,
+.navbar-gestao.left,
+.navbar-noticias.left,
+.navbar-projetos.left,
+.navbar-servicos.left,
+.navbar-sobre.left {
+    justify-content: flex-start;
+}
+
+.navbar-links.right, 
+.navbar-cs.right,
+.navbar-gestao.right,
+.navbar-noticias.right,
+.navbar-projetos.right,
+.navbar-servicos.right,
+.navbar-sobre.right {
+    justify-content: flex-end;
+}
+
+.navbar-links a, 
+.navbar-cs-links a,
+.navbar-gestao-links a,
+.navbar-noticias-links a,
+.navbar-projetos-links a,
+.navbar-servicos-links a,
+.navbar-sobre-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-family: 'Teko', sans-serif !important;
+    font-size: 22px !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s ease !important;
+}
+
+.navbar-links a::after,
+.navbar-cs-links a::after,
+.navbar-gestao-links a::after,
+.navbar-noticias-links a::after,
+.navbar-projetos-links a::after,
+.navbar-servicos-links a::after,
+.navbar-sobre-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.navbar-links a:hover,
+.navbar-cs-links a:hover,
+.navbar-gestao-links a:hover,
+.navbar-noticias-links a:hover,
+.navbar-projetos-links a:hover,
+.navbar-servicos-links a:hover,
+.navbar-sobre-links a:hover {
+    color: var(--color-white);
+}
+
+.navbar-links a:hover::after,
+.navbar-cs-links a:hover::after,
+.navbar-gestao-links a:hover::after,
+.navbar-noticias-links a:hover::after,
+.navbar-projetos-links a:hover::after,
+.navbar-servicos-links a:hover::after,
+.navbar-sobre-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navbar-center,
+.navbar-cs-center,
+.navbar-gestao-center,
+.navbar-noticias-center,
+.navbar-projetos-center,
+.navbar-servicos-center,
+.navbar-sobre-center {
+    text-align: center;
+}
+
+.navbar-center .brand,
+.navbar-cs-center .brand,
+.navbar-gestao-center .brand,
+.navbar-noticias-center .brand,
+.navbar-projetos-center .brand,
+.navbar-servicos-center .brand,
+.navbar-sobre-center .brand {
+    color: white;
+    text-decoration: none;
+    font-family: 'Teko', sans-serif !important;
+    font-size: 28px !important;
+    line-height: 0.9;
+    letter-spacing: 3px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.navbar,
+.navbar,
+.navbar-cs,
+.navbar-gestao,
+.navbar-noticias,
+.navbar-projetos,
+.navbar-servicos,
+.navbar-sobre,
+.navbar a,
+.navbar a,
+.navbar-cs a,
+.navbar-gestao a,
+.navbar-noticias a,
+.navbar-projetos a,
+.navbar-servicos a,
+.navbar-sobre a,
+.navbar .nav-link,
+.navbar-cs .nav-link,
+.navbar-gestao .nav-link,
+.navbar-noticias .nav-link,
+.navbar-projetos .nav-link,
+.navbar-servicos .nav-link,
+.navbar-sobre .nav-link {
+    color: white;
 }
