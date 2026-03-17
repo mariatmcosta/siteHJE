@@ -35,13 +35,60 @@
     .servicos-intro h2 { font-family: 'Teko', sans-serif; font-size: 48px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
     .servicos-intro p { font-size: 18px; line-height: 1.7; opacity: 0.85; max-width: 700px; margin: 0 auto; }
     .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 56px; }
-    .servico-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 34px 28px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
-    .servico-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #004aad, #6ab0ff); opacity: 0; transition: opacity 0.3s ease; }
-    .servico-card:hover { transform: translateY(-7px); box-shadow: 0 20px 45px rgba(0,74,173,0.22); border-color: rgba(0,74,173,0.4); }
-    .servico-card:hover::after { opacity: 1; }
     .servico-icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
-    .servico-card h3 { font-family: 'Teko', sans-serif; font-size: 26px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 10px; color: #fff; line-height: 1.1; }
-    .servico-card p { font-size: 15.5px; line-height: 1.65; opacity: 0.82; color: rgba(255,255,255,0.82); }
+    .servicos-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cards lado a lado */
+        gap: 16px;
+        margin-top: 40px;
+    }
+    .servico-card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px;
+
+        padding: 22px 18px; /* antes era 34px 28px */
+
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        text-align: center; 
+    }
+    .servico-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px; /* mais sutil */
+        background: linear-gradient(90deg, #004aad, #6ab0ff);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .servico-card:hover {
+        transform: translateY(-4px); /* antes -7px */
+        box-shadow: 0 12px 25px rgba(0,74,173,0.18);
+        border-color: rgba(0,74,173,0.35);
+    }
+    .servico-card:hover::after {
+        opacity: 1;
+    }
+    .servico-card h3 {
+        font-family: 'Teko', sans-serif;
+        font-size: 20px; /* antes 26px */
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+        color: #fff;
+        line-height: 1.2;
+    }
+    .servico-card p {
+        font-size: 13.5px; /* antes 15.5px */
+        line-height: 1.5;
+        opacity: 0.8;
+        color: rgba(255,255,255,0.8);
+    }
     .como-funciona { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.11); border-radius: 24px; padding: 48px 52px; margin-bottom: 48px; }
     .como-funciona h2 { font-family: 'Teko', sans-serif; font-size: 42px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 36px; }
     .steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -50,7 +97,6 @@
     .step h4 { font-family: 'Teko', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 7px; color: #fff; }
     .step p { font-size: 14.5px; line-height: 1.6; opacity: 0.78; }
     .contato-cta { text-align: center; background: linear-gradient(135deg, rgba(0,74,173,0.18), rgba(106,176,255,0.1)); border: 1px solid rgba(0,74,173,0.3); border-radius: 24px; padding: 60px 40px; position: relative; overflow: hidden; }
-    .contato-cta::before { content: '@'; position: absolute; left: 40px; top: 20px; font-family: 'Teko', sans-serif; font-size: 120px; color: rgba(255,255,255,0.03); pointer-events: none; }
     .contato-cta h2 { font-family: 'Teko', sans-serif; font-size: 52px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
     .contato-cta p { font-size: 18px; line-height: 1.7; opacity: 0.85; max-width: 600px; margin: 0 auto 36px; }
     .btn-email { display: inline-flex; align-items: center; gap: 10px; background-color: #1d27b4; color: #fff; padding: 16px 40px; border-radius: 14px; text-decoration: none; font-family: 'Teko', sans-serif; font-size: 22px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; transition: opacity 0.2s, transform 0.25s; box-shadow: 0 8px 30px rgba(0,74,173,0.4); }
@@ -145,19 +191,15 @@
     <div class="servicos-grid">
         <div class="servico-card" data-aos="fade-up" data-aos-delay="0">
             <h3>Desenvolvimento de Software</h3>
-            <p>Sites, sistemas web e aplicações sob medida para clínicas, hospitais, startups de saúde e pesquisadores.</p>
         </div>
         <div class="servico-card" data-aos="fade-up" data-aos-delay="100">
             <h3>Análise &amp; Visualização de Dados</h3>
-            <p>Transformamos dados clínicos e biomédicos em dashboards e relatórios que facilitam a tomada de decisão.</p>
         </div>
         <div class="servico-card" data-aos="fade-up" data-aos-delay="0">
             <h3>Automação de Processos</h3>
-            <p>Automatizamos tarefas repetitivas e integramos sistemas para tornar fluxos clínicos e administrativos mais eficientes.</p>
         </div>
         <div class="servico-card" data-aos="fade-up" data-aos-delay="200">
             <h3>Treinamentos &amp; Workshops</h3>
-            <p>Capacitamos equipes em programação, análise de dados e uso de ferramentas tecnológicas aplicadas à saúde.</p>
         </div>
     </div>
 
@@ -171,15 +213,18 @@
 
 </div>
 
-<footer class="footer">
+<footer class="footer" style="padding:28px 16px; text-align:center;">
     <p>© 2026 Healthtech Júnior Einstein | Todos direitos reservados</p>
     <div class="social-links">
         <a href="https://www.instagram.com/healthtechjr.einstein/" target="_blank"><img src="{% static 'imgs/instagram.svg' %}" alt="Instagram"></a>
-        <a href="https://www.linkedin.com/company/einsteincoding/posts/?feedView=all" target="_blank"><img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn"></a>
-        <a href="https://github.com/Einstein-Coding-Projetos" target="_blank" aria-label="GitHub"><img src="{% static 'imgs/github.svg' %}" alt="GitHub" style="filter:brightness(0) invert(1);"></a>
+        <a href="https://www.linkedin.com/company/einsteincoding/" target="_blank"><img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn"></a>
+        <a href="https://github.com/Einstein-Coding-Projetos" target="_blank" aria-label="GitHub">
+            <img src="{% static 'imgs/github.svg' %}" alt="GitHub" style="filter: brightness(0) invert(1);"> 
+        </a>
     </div>
-    <p>Email: einstein.coding@outlook.com</p>
-</footer>
+    <p>Endereço: Av. Prof. Francisco Morato, 4293 - Butantã, São Paulo - SP, 05521-100</p>
+        <p>Email: einstein.coding@outlook.com</p>
+</footer>    
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init({ duration: 900, once: false, mirror: true, disable: 'mobile' });</script>

@@ -258,71 +258,64 @@
                 Eventos da HJE
             </h1>
     
-            <div class="eventos-grid">
+            <div class="bento-grid">
     
                 {% for evento in eventos %}
     
-                <div class="evento-card" data-aos="fade-up">
+                {% if evento.link %}
+                <a href="{{ evento.link }}" target="_blank" class="bento-card-link">
+                {% endif %}
     
-                    {% if evento.image %}
-                    <img src="{{ evento.image.url }}" alt="{{ evento.title }}">
-                    {% endif %}
+                    <div class="bento-card {% if forloop.first %}destaque{% endif %}" data-aos="fade-up">
     
-                    <div class="evento-content">
-    
-                        <h3>{{ evento.title }}</h3>
-    
-                        <p>{{ evento.summary }}</p>
-    
-                        {% if evento.link %}
-                        <a href="{{ evento.link }}" class="btn" target="_blank">
-                            Ver evento
-                        </a>
+                        {% if evento.image %}
+                            <div class="bento-bg" style="background-image: url('{{ evento.image.url }}');"></div>
                         {% endif %}
+    
+                        <div class="bento-content">
+    
+                            <h3>{{ evento.title }}</h3>
+    
+                            <p class="{% if forloop.first %}resumo-destaque{% endif %}">
+                                {{ evento.summary }}
+                            </p>
+    
+                            {% if evento.link %}
+                                <span class="btn-arrow">
+                                    Acessar evento →
+                                </span>
+                            {% endif %}
+    
+                        </div>
     
                     </div>
     
-                </div>
+                {% if evento.link %}
+                </a>
+                {% endif %}
     
                 {% empty %}
-    
-                <p>Nenhum evento disponível.</p>
-    
+                    <p data-aos="fade-in">Nenhum evento disponível.</p>
                 {% endfor %}
     
             </div>
     
         </div>
     
-    </section>    
+    </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" style="padding:28px 16px; text-align:center;">
         <p>© 2026 Healthtech Júnior Einstein | Todos direitos reservados</p>
-
         <div class="social-links">
-            <a href="https://www.instagram.com/healthtechjr.einstein/" target="_blank" aria-label="Instagram">
-                <img src="{% static 'imgs/instagram.svg' %}" alt="Instagram">
-            </a>
-            <a href="https://www.linkedin.com/company/einsteincoding/posts/?feedView=all" target="_blank" aria-label="LinkedIn">
-                <img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn">
-            </a>
+            <a href="https://www.instagram.com/healthtechjr.einstein/" target="_blank"><img src="{% static 'imgs/instagram.svg' %}" alt="Instagram"></a>
+            <a href="https://www.linkedin.com/company/einsteincoding/" target="_blank"><img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn"></a>
             <a href="https://github.com/Einstein-Coding-Projetos" target="_blank" aria-label="GitHub">
-                <img src="{% static 'imgs/github.svg' %}" alt="GitHub">
+                <img src="{% static 'imgs/github.svg' %}" alt="GitHub" style="filter: brightness(0) invert(1);"> 
             </a>
         </div>
-
-        <div class="footer-contact">
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                Av. Prof. Francisco Morato, 4293 - Butantã, São Paulo - SP
-            </span>
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                einstein.coding@outlook.com
-            </span>
-        </div>
-    </footer>
+        <p>Endereço: Av. Prof. Francisco Morato, 4293 - Butantã, São Paulo - SP, 05521-100</p>
+            <p>Email: einstein.coding@outlook.com</p>
+    </footer>    
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

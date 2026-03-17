@@ -198,7 +198,7 @@ class TeamMember(models.Model):
         
 class Eventos(models.Model):
     title = models.CharField("Título", max_length=200)
-    summary = models.TextField("Resumo")
+    summary = models.TextField("Resumo", max_length=550)
     image = models.ImageField("Imagem", upload_to='projects/', blank=True, null=True)
     link = models.URLField("Link do site do Evento", blank=True, null=True)
     created_at = models.DateTimeField("Data de criação", auto_now_add=True)
