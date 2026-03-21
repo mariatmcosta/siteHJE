@@ -9,9 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&
-  family=Exo+2:wght@400;500;600;700&
-  family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/HJE2.ico' %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -140,28 +138,28 @@
 
   <div id="mobile-spacer"></div>
 
-  <header id="desktop-original-header" class="navbar-gestao">
+    <header id="desktop-original-header" class="navbar">
 
-    <nav class="navbar-gestao-links left">
-        <a href="/sobre-nos/">Quem somos</a>
-        <a href="/projetos/">Projetos</a>
-        <a href="/servicos/">Serviços</a>
-    </nav>
+        <nav class="navbar-links left">
+            <a href="/sobre-nos/">Quem somos</a>
+            <a href="/projetos/">Projetos</a>
+            <a href="/servicos/">Serviços</a>
+        </nav>
 
-    <div class="navbar-gestao-center">
-        <a href="/" class="brand">
-            HEALTHTECH JÚNIOR<br>EINSTEIN
-        </a>
-    </div>
+        <div class="navbar-center">
+            <a href="/" class="brand">
+                HEALTHTECH JÚNIOR<br>EINSTEIN
+            </a>
+        </div>
 
-    <nav class="navbar-gestao-links right">
-        <a href="/codigo-social/">Código Social</a>
-        <a href="/noticias/">Notícias</a>
-        <a href="/gestao/">Gestão</a>
-        <a href="/loja/">Loja</a>
-    </nav>
+        <nav class="navbar-links right">
+            <a href="/codigo-social/">Código Social</a>
+            <a href="/noticias/">Notícias</a>
+            <a href="/gestao/">Gestão</a>
+            <a href="/loja/">Loja</a>
+        </nav>
 
-  </header>
+    </header>
   
     <main class="gestao-page">
       <section class="gestao-container">
@@ -332,7 +330,7 @@
       
       {% for member in members %}
 
-      {% if forloop.counter0|divisibleby:4 %}
+      {% if forloop.counter0|divisibleby:3 %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
       <div class="row justify-content-center">
       {% endif %}
@@ -369,7 +367,7 @@
       
       </div>
       
-      {% if forloop.counter|divisibleby:4 or forloop.last %}
+      {% if forloop.counter|divisibleby:3 or forloop.last %}
       </div>
       </div>
       {% endif %}

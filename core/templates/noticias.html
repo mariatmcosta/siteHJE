@@ -9,9 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&
-    family=Exo+2:wght@400;500;600;700&
-    family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/noticias.css' %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/HJE2.ico' %}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -21,9 +19,22 @@
 <body class="section-dark">
 
     <style>
-        #mobile-header-overlay { display: none !important; }
-        #desktop-original-header { display: grid !important; } 
-        #mobile-spacer { display: none; height: 80px; }
+            .noticias-header {
+                padding: 30px !important;
+                margin-top: 140px !important; /* Ajusta a distância do topo */
+            }
+
+            .noticias-header h2 {
+                font-size: 35px !important;
+                color: white !important;
+            }
+
+            .noticias-header p {
+                font-size: 18px !important; 
+                max-width: 700px !important;
+                margin: 0 auto !important;
+                display: block !important;
+            }
 
         /* REGRAS APENAS PARA CELULAR (Mobile < 950px) */
         @media screen and (max-width: 950px) {
@@ -139,21 +150,21 @@
 
     <div id="mobile-spacer"></div>
 
-    <header id="desktop-original-header" class="navbar-noticias">
+    <header id="desktop-original-header" class="navbar">
 
-        <nav class="navbar-noticias-links left">
+        <nav class="navbar-links left">
             <a href="/sobre-nos/">Quem somos</a>
             <a href="/projetos/">Projetos</a>
             <a href="/servicos/">Serviços</a>
         </nav>
 
-        <div class="navbar-noticias-center">
+        <div class="navbar-center">
             <a href="/" class="brand">
                 HEALTHTECH JÚNIOR<br>EINSTEIN
             </a>
         </div>
 
-        <nav class="navbar-noticias-links right">
+        <nav class="navbar-links right">
             <a href="/codigo-social/">Código Social</a>
             <a href="/noticias/">Notícias</a>
             <a href="/gestao/">Gestão</a>
