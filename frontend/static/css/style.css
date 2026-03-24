@@ -364,7 +364,7 @@ h1, h2, h3, h4, h5, h6 {
 .bento-content {
     position: relative;
     z-index: 2;
-    padding: 28px;
+    padding: 40px 28px 28px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -377,6 +377,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-white);
     margin-bottom: 8px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 12px;
 }
 
 .bento-content p {
@@ -964,7 +965,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Remove o fundo gradiente antigo e aplica o fundo escuro corporativo */
 .news-detail-page {
-    background: var(--color-dark, #0d1117);
+    background: var(--color-navy);
     min-height: 100vh;
     padding: 0;
 }
@@ -992,7 +993,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: #ffffff;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     line-height: 1;
 }
 
@@ -1987,8 +1988,8 @@ html body section.noticias-header p {
 
 .eventos-home .section-title {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
+    font-size: 56px;
+    margin-bottom: 10px;
     color: #ffffff;
 }
 
@@ -2058,7 +2059,7 @@ html body section.noticias-header p {
 /* Mensagem caso não tenha eventos */
 .eventos-home p {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 20px;
     color: #ffffff;
 }
 
@@ -2504,7 +2505,6 @@ footer h4 {
 .bento-content p {
     font-size: 15px;
     color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 12px;
     line-height: 1.5;
 }
 

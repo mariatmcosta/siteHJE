@@ -18,87 +18,148 @@
     family=Exo+2:wght@400;500;600;700&
     family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="news-detail-page">
+<body style="background: #050a1e;">
 
-    <!-- NAVBAR (mesmo da home) -->
-    <div id="mobile-header-overlay">
-        <div class="mob-top">
-            <a href="/" class="mob-logo">
-                <img src="{% static 'imgs/HJE.png' %}" alt="Logo">
-            </a>
-            <button class="mob-btn" onclick="this.classList.toggle('active'); document.getElementById('mobMenuOverlay').classList.toggle('open');">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-        <nav class="mob-links" id="mobMenuOverlay">
-            <a href="/">Início</a>
-            <a href="/sobre-nos/">Sobre nós</a>
-            <a href="/projetos/">Nossos Projetos</a>
-            <a href="/servicos/">Nossos Serviços</a>
-            <a href="/codigo-social/">Código Social</a>
-            <a href="/noticias/">Notícias</a>
-            <a href="/loja/">Loja</a>
-            <a href="/gestao/">Gestão</a>
-        </nav>
-    </div>
-    <div id="mobile-spacer"></div>
+    <style>
 
-    <header id="desktop-original-header" class="navbar">
-        <nav class="navbar-links left">
-            <a href="/sobre-nos/">Sobre nós</a>
-            <a href="/projetos/">Nossos Projetos</a>
-            <a href="/servicos/">Nossos Serviços</a>
-        </nav>
-        <div class="navbar-center">
-            <a href="/" class="brand">HEALTHTECH JÚNIOR<br>EINSTEIN</a>
-        </div>
-        <nav class="navbar-links right">
-            <a href="/codigo-social/">Código Social</a>
-            <a href="/noticias/">Notícias</a>
-            <a href="/loja/">Loja</a>
-            <a href="/gestao/">Gestão</a>
-        </nav>
-    </header>
+        body {
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(65,105,225,0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(123,104,238,0.12), transparent 40%),
+                #050a1e;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            background: rgba(5, 10, 30, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        
+            padding: 20px;
+        }
+        
+        .modal-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+        
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+        
+            overflow-y: auto;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .modal-header {
+            width: 100%;
+            height: 260px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 24px 24px 0 0;
+        }
+        
+        .modal-body {
+            padding: 32px 36px 36px;
+        }
+        
+        .modal-body h2 {
+            font-family: 'Teko', sans-serif;
+            font-size: 38px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+            color: #fff;
+        }
+        
+        .modal-body p {
+            font-size: 17px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        .modal-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #4169e1, #7b68ee);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: 'Teko', sans-serif;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        
+        .modal-cta:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 28px;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+        }
+
+        
+    </style>
 
     <!-- CONTEÚDO -->
-    <div class="news-detail-wrapper">
-        <h1 class="news-detail-title">{{ news.title }}</h1>
+    <div class="modal-overlay active">
 
-        {% if news.created_at %}
-            <p class="news-detail-date">Publicado em {{ news.created_at|date:"d/m/Y" }}</p>
-        {% endif %}
-
-        {% if news.image %}
-            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-detail-image">
-        {% endif %}
-
-        <div class="news-detail-content">
-            {{ news.content|linebreaks }}
-        </div>
-
-        <div class="news-detail-actions">
-            <a href="/noticias/" class="news-detail-back">← Voltar para Notícias</a>
-            <a href="/" class="news-detail-back">⌂ Voltar para Home</a>
-        </div>
-
-        {% if news.external_link %}
-            <div class="news-detail-actions">
-                <a href="{{ news.external_link }}" target="_blank" class="news-external-link">🔗 Acessar link relacionado</a>
+        <div class="modal-glass" style="max-width: 800px; width: 95%;">
+            <span class="close-btn" onclick="window.history.back()">&times;</span>
+    
+            {% if news.image %}
+            <div class="modal-header" style="background-image: url('{{ news.image.url }}');"></div>
+            {% endif %}
+    
+            <div class="modal-body">
+    
+                <h2>{{ news.title }}</h2>
+    
+                {% if news.created_at %}
+                    <p style="opacity: 0.6; font-size: 14px; margin-bottom: 20px;">
+                        Publicado em {{ news.created_at|date:"d/m/Y" }}
+                    </p>
+                {% endif %}
+    
+                <p style="font-size: 17px; line-height: 1.7; opacity: 0.9;">
+                    {{ news.content|linebreaks }}
+                </p>
+    
+                <div style="margin-top: 30px; display: flex; gap: 16px; flex-wrap: wrap;">
+    
+                    <a href="/" class="modal-cta" style="background: transparent; border: 1px solid rgba(65,105,225,0.5);">
+                        ← Home
+                    </a>
+    
+                    {% if news.external_link %}
+                    <a href="{{ news.external_link }}" target="_blank" class="modal-cta">
+                        🔗 Acessar link
+                    </a>
+                    {% endif %}
+    
+                </div>
+    
             </div>
-        {% endif %}
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer" style="background: #0d1117; border-top: 1px solid rgba(255,255,255,0.06);">
-        <p>© 2026 Healthtech Júnior Einstein | Todos direitos reservados</p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/healthtechjr.einstein/" target="_blank"><img src="{% static 'imgs/instagram.svg' %}" alt="Instagram"></a>
-            <a href="https://www.linkedin.com/company/einsteincoding/posts/?feedView=all" target="_blank"><img src="{% static 'imgs/linkedin.svg' %}" alt="LinkedIn"></a>
-            <a href="https://github.com/Einstein-Coding-Projetos" target="_blank"><img src="{% static 'imgs/github.svg' %}" alt="GitHub" style="filter: brightness(0) invert(1);"></a>
         </div>
-        <p>Av. Prof. Francisco Morato, 4293 - Butantã, São Paulo - SP</p>
-        <p>Email: einstein.coding@outlook.com</p>
-    </footer>
+    </div>
 
 </body>
 </html>

@@ -161,20 +161,18 @@
     }
     
     .areas-line {
-        position: relative;
-        display: flex;
-        gap: 40px;
-        margin-top: 30px;
         overflow-x: auto;
+        margin-top: 30px;
         padding-bottom: 20px;
     }
 
     .areas-line::before {
         content: '';
         position: absolute;
-        top: 18px;
+        top: 22px;
         left: 0;
-        right: 0;
+        width: max-content;
+        min-width: 100%;
         height: 2px;
         background: linear-gradient(90deg, #6ab0ff, #b47fff);
         opacity: 0.3;
@@ -245,6 +243,25 @@
         letter-spacing: 1.5px;
         text-transform: uppercase;
         margin-bottom: 30px;
+    }
+
+    .areas-track {
+        position: relative;
+        display: flex;
+        gap: 40px;
+        width: max-content; /* ESSENCIAL */
+        padding-right: 40px; /* espaço final bonito */
+    }
+
+    .areas-track::before {
+        content: '';
+        position: absolute;
+        top: 18px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #6ab0ff, #b47fff);
+        opacity: 0.3;
     }
 </style>
 
@@ -377,35 +394,37 @@
         <h2>ONDE VOCÊ SE ENCAIXA?</h2>
     
         <div class="areas-line">
+            <div class="areas-track">
     
-            <div class="area-item">
-                <span class="dot"></span>
-                <h3>Código Social</h3>
-                <p>Braço social com ensino de programação para jovens.</p>
-            </div>
-    
-            <div class="area-item">
-                <span class="dot"></span>
-                <h3>Projetos</h3>
-                <p>Desenvolvimento de software, dados e capacitação técnica.</p>
-            </div>
-    
-            <div class="area-item">
-                <span class="dot"></span>
-                <h3>Marketing</h3>
-                <p>Gestão de marca, redes sociais e comunicação.</p>
-            </div>
-    
-            <div class="area-item">
-                <span class="dot"></span>
-                <h3>Adm / Comercial</h3>
-                <p>Parcerias, vendas consultivas e novos negócios.</p>
-            </div>
-    
-            <div class="area-item">
-                <span class="dot"></span>
-                <h3>RH</h3>
-                <p>Recrutamento, cultura e desenvolvimento interno.</p>
+                <div class="area-item">
+                    <span class="dot"></span>
+                    <h3>Código Social</h3>
+                    <p>Braço social com ensino de programação para jovens.</p>
+                </div>
+        
+                <div class="area-item">
+                    <span class="dot"></span>
+                    <h3>Projetos</h3>
+                    <p>Desenvolvimento de software, dados e capacitação técnica.</p>
+                </div>
+        
+                <div class="area-item">
+                    <span class="dot"></span>
+                    <h3>Marketing</h3>
+                    <p>Gestão de marca, redes sociais e comunicação.</p>
+                </div>
+        
+                <div class="area-item">
+                    <span class="dot"></span>
+                    <h3>Adm / Comercial</h3>
+                    <p>Parcerias, vendas consultivas e novos negócios.</p>
+                </div>
+        
+                <div class="area-item">
+                    <span class="dot"></span>
+                    <h3>RH</h3>
+                    <p>Recrutamento, cultura e desenvolvimento interno.</p>
+                </div>
             </div>
     
         </div>
