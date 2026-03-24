@@ -19,6 +19,37 @@
 </head>
 <body>
 
+    <style>
+        /* =========================
+        IMPACTO SOCIAL RESPONSIVO
+     ========================= */
+     
+     .impacto-container {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 60px;
+         align-items: center;
+     }
+     
+     /* MOBILE */
+     @media (max-width: 768px) {
+         .impacto-container {
+             grid-template-columns: 1fr;
+             gap: 40px;
+             text-align: center;
+         }
+     
+         .impacto-container h2,
+         .impacto-container .intro-text {
+             text-align: center !important;
+         }
+     
+         .impacto-container .btn-corporate {
+             margin: 0 auto;
+         }
+     }
+    </style>
+
     <!-- MOBILE HEADER -->
     <div id="mobile-header-overlay">
         <div class="mob-top">
@@ -151,7 +182,7 @@
     <!-- IMPACTO SOCIAL - Fundo escuro/preto -->
     <section class="section-dark">
         <div class="home-section">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+            <div class="impacto-container">
                 <div data-aos="fade-right">
                     <h2 style="text-align: left;">Nosso Impacto Social</h2>
                     <p class="intro-text" style="text-align: left; margin-left: 0;">
@@ -205,7 +236,10 @@
                         </div>
                         <div>
                             <div class="stat-value">3</div>
-                            <div class="stat-label">Comunidades parceiras: Ensino Einstein, ETIM e PECP</div>
+                            <div class="stat-label">
+                                Comunidades parceiras:<br>
+                                Ensino Einstein, ETIM e PECP
+                            </div>
                         </div>
                     </div>
                 </div>
