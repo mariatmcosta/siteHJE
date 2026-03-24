@@ -611,13 +611,6 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
 }
 
-/* RECOLOCANDO O EFEITO DE HOVER */
-.stat-card:hover {
-    border-color: #3b82f6 !important; /* Cor azul de destaque */
-    transform: translateY(-5px) !important; /* Sobe um pouquinho */
-    background: rgba(255, 255, 255, 0.1) !important;
-}
-
 .stat-icon {
     width: 60px !important;
     height: 60px !important;
@@ -630,11 +623,6 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center !important;
     flex-shrink: 0 !important; 
     transition: transform 0.3s ease !important;
-}
-
-/* ÍCONE GIRA OU CRESCE NO HOVER (OPCIONAL, FICA TOP) */
-.stat-card:hover .stat-icon {
-    transform: scale(1.1) !important;
 }
 
 .stat-icon svg, .stat-icon img {
@@ -2693,3 +2681,4 @@ footer h4 {
         grid-template-columns: 1fr; /* 1 por linha */
     }
 }
+

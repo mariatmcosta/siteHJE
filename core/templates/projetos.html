@@ -47,9 +47,8 @@
     .bento-card:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(65,105,225,0.25); border-color: rgba(65,105,225,0.4); }
     .bento-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
     .bento-card:hover .bento-bg { transform: scale(1.06); }
-    .bento-bg::after { content: ''; position: absolute; inset: 0; background-color: linear-gradient(to top, rgba(10,15,40,0.92) 0%, rgba(10,15,40,0.35) 60%, transparent 100%); }
+    .bento-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,15,40,0.92) 0%, rgba(10,15,40,0.35) 60%, transparent 100%); }
     .bento-content { position: relative; z-index: 2; padding: 28px; }
-    .bento-card.destaque .bento-content::before { content: 'DESTAQUE'; display: inline-block; background: #636ce6; padding: 3px 12px; border-radius: 20px; font-family: 'Teko', sans-serif; font-size: 11px; letter-spacing: 2.5px; color: #fff; margin-bottom: 10px; }
     .bento-content h3 { font-family: 'Teko', sans-serif; font-size: 30px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 8px; line-height: 1.1; color: #fff; }
     .bento-card.destaque .bento-content h3 { font-size: 38px; }
     .bento-content p { font-size: 15px; line-height: 1.6; opacity: 0.85; color: rgba(255,255,255,0.85); margin-bottom: 16px; }
@@ -89,6 +88,49 @@
         .bento-card.destaque { grid-column: span 1; min-height: 280px; }
         .proj-wrapper { padding: 40px 20px; }
         .hero-projetos h1 { font-size: 56px; }
+    }
+
+    .bento-bg {
+        pointer-events: none;
+    }
+
+    .bento-bg::after {
+        pointer-events: none;
+    }
+
+    .bento-bg {
+        z-index: 1;
+    }
+    
+    .bento-content {
+        z-index: 2;
+        position: relative;
+    }
+
+    [data-aos] {
+        opacity: 1 !important;
+    }
+
+    .bento-card {
+        position: relative;
+    }
+    
+    .bento-bg {
+        z-index: 0;
+    }
+    
+    .bento-bg::after {
+        z-index: 0;
+    }
+    
+    .bento-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .btn-ler-mais {
+        position: relative;
+        z-index: 20;
     }
 </style>
 
@@ -165,7 +207,13 @@
                 <h3>{{ project.title }}</h3>
                 <p>{% if forloop.first %}{{ project.summary|truncatechars:200 }}{% else %}{{ project.summary|truncatechars:80 }}{% endif %}</p>
                 <div style="display:flex;gap:14px;align-items:center;">
-                    <button class="btn-ler-mais" onclick="openModal('{{ project.title|escapejs }}', '{{ project.summary|escapejs }}', '{% if project.image %}{{ project.image.url }}{% endif %}', '{{ project.link|default:'' }}')">Ver projeto →</button>
+                    <button class="btn-ler-mais"
+                        data-title="{{ project.title|escapejs }}"
+                        data-desc="{{ project.summary|escapejs }}"
+                        data-img="{% if project.image %}{{ project.image.url|escapejs }}{% endif %}"
+                        data-link="{{ project.link|default:''|escapejs }}">
+                        Ver projeto →
+                    </button>
                     {% if project.link %}<a href="{{ project.link }}" target="_blank" class="btn-ext-link" title="Visitar site">↗</a>{% endif %}
                 </div>
             </div>
@@ -226,7 +274,14 @@
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 900, once: false, mirror: true, disable: 'mobile' });</script>
+<script>
+AOS.init({
+    duration: 900,
+    once: false,
+    mirror: true,
+    disable: 'mobile'
+});
+</script>
 <script>
 function openModal(title, description, imageUrl, link) {
     document.getElementById('modalTitle').innerText = title;
@@ -262,6 +317,19 @@ function closeModal(event) {
         lastScroll = current;
     }, { passive: true });
 })();
+</script>
+<script>
+document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.btn-ler-mais');
+    if (!btn) return;
+
+    const title = btn.dataset.title;
+    const desc = btn.dataset.desc;
+    const img = btn.dataset.img;
+    const link = btn.dataset.link;
+
+    openModal(title, desc, img, link);
+});
 </script>
 </body>
 </html>
