@@ -210,7 +210,7 @@
                     <button class="btn-ler-mais"
                         data-title="{{ project.title|escapejs }}"
                         data-desc="{{ project.summary|escapejs }}"
-                        data-img="{% if project.image %}{{ project.image.url|escapejs }}{% endif %}"
+                        data-img="{% if project.image %}{{ project.image.url}}{% endif %}"
                         data-link="{{ project.link|default:''|escapejs }}">
                         Ver projeto →
                     </button>
