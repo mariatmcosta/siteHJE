@@ -127,7 +127,13 @@ class HealthcareJuniorCard(models.Model):
 class Product(models.Model):
     title = models.CharField("Nome do produto", max_length=120)
     description = models.TextField("Descrição")
-    price = models.DecimalField("Preço", max_digits=8, decimal_places=2)
+    price = models.DecimalField(
+        "Preço",
+        max_digits=8,
+        decimal_places=2,
+        blank=True,   
+        null=True     
+    )
     
     image = models.ImageField(
         "Imagem do produto",
